@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { LookappsService } from '../../services/lookappsdb.service';
+import { LookappsUtilisateur } from '../../models/lookapp-utilisateur.model';
 
 /**
  * Generated class for the ProfilePage page.
@@ -18,8 +20,16 @@ export class ProfilePage {
     email: string ;
     nom: string;
   
-    constructor(public navCtrl: NavController) {
-       
+    utilisateur: LookappsUtilisateur = new LookappsUtilisateur();
+
+    constructor(public navCtrl: NavController, public lookappsService: LookappsService) {
+        
+      this.lookappsService.getUtilisateurBy(this.email)
+        .then(newFetched => {
+            this.utilisateur = newFetched;
+            console.log(this.utilisateur);
+          
+        });
     }
 
 }
