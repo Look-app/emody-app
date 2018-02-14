@@ -21,26 +21,16 @@ export class Accueil {
     pseudo: string;
     mdp: string;  
     
-    utilisateurs: Array<LookappsUtilisateur> = new Array<LookappsUtilisateur>();
+  
     articles: Array<LookappsArticles> = new Array<LookappsArticles>();
     
     constructor(public navCtrl: NavController, public navParams: NavParams,public alertCtrl: AlertController,  public loadingCtrl: LoadingController, private lookappsService: LookappsService ) {
+      
       this.init();
-     // console.log(this.articles);
+  
       this.initializeItems();  
-     
-     // this.pseudo = this.navParams.get('pseudo');
-      //this.mdp = this.navParams.get('mdp');
-        console.log(this.pseudo);
-        console.log(this.mdp);
 
-      /*  this.lookappsService.getUtilisateurs()
-        .then(newFetched => {
-            this.utilisateurs = newFetched;
-            console.log(this.utilisateurs);
-            
-        });
-*/
+      //this.utilisateur = this.lookappsService.getUtilisateurConnecter();
 
     }
     
@@ -74,31 +64,11 @@ export class Accueil {
             
         });
     }
-   /* voirMap() {
-        let loader = this.loadingCtrl.create({
-          spinner: 'crescent',
-          content: "Tentative de connexion..."
-        });
-        
-        loader.present();
-    
-        setTimeout(() => {
-          loader.dismiss();
-        }, 1000);
-        this.navCtrl.push(MapPage);
-      
-      }*/
-    /*  quitter() {
-      
-        this.navCtrl.setRoot(HomePage);
-      
-      }
-    */
 
   initializeItems() {
   
       for (let i = 0; i < this.articles.length; i++) {
-          this.items.push(this.articles[i].image);
+          this.items.push(this.articles[i].nom);
       }
     
   }

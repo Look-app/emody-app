@@ -11,6 +11,21 @@
     <ion-content>
           <h2>Personnaliser vos propres tenues</h2>
           <ion-grid>
+                <ion-list radio-group [(ngModel)]="autoSexe">
+                    Sexe
+                        <ion-item>
+                            <ion-label>Homme</ion-label>
+                            <ion-radio value="homme" checked></ion-radio>
+                        </ion-item>
+                        <ion-item>
+                            <ion-label>Femme</ion-label>
+                            <ion-radio value="femme"></ion-radio>
+                        </ion-item>
+                        <ion-item>
+                            <ion-label>Enfant</ion-label>
+                            <ion-radio value="enfant"></ion-radio>
+                        </ion-item>    
+                </ion-list>
               <ion-row>
                 <ion-col col-12 id="corps">  
                 vêtement de haut:
@@ -18,20 +33,9 @@
                             <ion-slides pager>
                                 <div id="categ" *ngFor="let element of articles">
                                     <ion-slide >
-                                        <ion-img [width]="180" id="slides1" [height]="175" src="../../assets/imgs/{{ element.image }}"></ion-img>
+                                        <ion-img [width]="175" id="slides1" [height]="175" src="../../assets/imgs/{{ element.image }}"></ion-img>
                                     </ion-slide>
                                 </div>
-                                   <!-- <ion-slide >
-                                        <ion-img [width]="500" id="slides1" [height]="175" src="../../assets/imgs/banner2.png"></ion-img>
-                                    </ion-slide>
-                                
-                                    <ion-slide>
-                                        <ion-img [width]="500" id="slides1" [height]="175" src="../../assets/imgs/banner3.png"></ion-img>
-                                    </ion-slide>
-                            
-                                    <ion-slide>
-                                        <ion-img [width]="500" id="slides1" [height]="175" src="../../assets/imgs/banner4.png"></ion-img>
-                                    </ion-slide>-->
                             </ion-slides>
                     </ion-card>
                 vêtement de bas:
@@ -39,12 +43,12 @@
                             <ion-slides pager>
                                     <div id="categ" *ngFor="let element of articles2">
                                             <ion-slide >
-                                                <ion-img [width]="180" id="slides1" [height]="175" src="../../assets/imgs/{{ element.image }}"></ion-img>
+                                                <ion-img [width]="175" id="slides1" [height]="175" src="../../assets/imgs/{{ element.image }}"></ion-img>
                                             </ion-slide>
                                     </div>
                             </ion-slides>
                     </ion-card>
-                <button ion-button clear>Enregistrer</button>
+                <button ion-button class="center" clear>Enregistrer</button>
                 </ion-col>
               </ion-row>
           </ion-grid>

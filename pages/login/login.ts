@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController, AlertController } from 'ionic-angular';
 import { LoadingController } from 'ionic-angular';
-import { Accueil } from '../accueil/accueil';
+//import { Accueil } from '../accueil/accueil';
 import { Recuperation } from '../recuperation/recuperation';
 
 import { LookappsService } from '../../services/lookappsdb.service';
@@ -38,15 +38,48 @@ export class Login {
         .then(newFetched => {
           if(newFetched.length != 0){
               loader.dismiss();
+              this.utilisateurs = newFetched;
+              console.log(this.utilisateurs);
+
+               //loader.present();
+              let isLa = false;
+              for(let i=0; i< this.utilisateurs.length; i++){
+                if(this.utilisateurs[i].nom==this.email || this.utilisateurs[i].email==this.email || this.utilisateurs[i].prenom==this.email){
+                  
+                    if(this.utilisateurs[i].password==this.passwordCrypted){
+                          //loader.dismiss();
+                          this.lookappsService.setUtilisateurConnecter(this.utilisateurs[i]);
+                          isLa=true;
+                          this.navCtrl.setRoot(TabsPage,{
+                            pseudo: this.email,
+                            mdp: this.mdp
+                          });
+                    }
+                    else if(this.utilisateurs[i].password!=this.passwordCrypted){
+                          //loader.dismiss();
+                          this.doAlert("Erreur", "Le mot de passe que vous aviez tapez est incorrect!!");
+                          break;
+                    }
+                }
+                else{
+                    isLa = false;
+                }
+            }
+            //loader.dismiss();
+            if(isLa==false ){
+                this.doAlert("Erreur", "Votre compte est introuvable nooo!!");
+            }
+
+
           } 
-          else if(newFetched.length == 0){
+          else{
+            loader.dismiss();
               this.doAlert('Erreur', 'Nous sommes désolé car une erreur est survenue lors du chargement');
           }
-            this.utilisateurs = newFetched;
-            console.log(this.utilisateurs);
-            
-        });
+         });
   }
+/*
+  
   appel(){
   let loader = this.loadingCtrl.create({
       spinner: 'crescent',
@@ -67,13 +100,14 @@ export class Login {
 
   testUser(): any{
     this.chargerUlisateurs();
-    
+
     let retour = [false, false];
     for(let i=0; i< this.utilisateurs.length; i++){
         if(this.utilisateurs[i].nom==this.email || this.utilisateurs[i].email==this.email || this.utilisateurs[i].prenom==this.email){
             retour[0] = true;
             if(this.utilisateurs[i].password==this.passwordCrypted){
                   retour[1] = true;
+                  this.lookappsService.setUtilisateurConnecter(this.utilisateurs[i]);
                   return retour;//testUser == vraie
             }
             else{
@@ -87,10 +121,17 @@ export class Login {
     }
     return retour;
   }
-  
+  */
   presentLoading() {
+    this.lookappsService.sha1(this.mdp)
+    .then(newFetched => {
+          this.passwordCrypted = newFetched.valeur; 
+          console.log("votre password crypted ="+this.passwordCrypted);
 
-    this.appel();
+    });
+    this.chargerUlisateurs();
+  }
+   /* this.appel();
 
     let test2 =  this.testUser();
     console.log("test = "+test2);
@@ -109,10 +150,8 @@ export class Login {
     }
     else{
       this.showAlertPseudo();
-    }
-  }
-   
-  showAlertPseudo() {
+    } */
+ /* showAlertPseudo() {
     let alert = this.alertCtrl.create({
       title: 'Erreur de connexion',
       subTitle: 'Identifiant incorrect !',
@@ -127,9 +166,9 @@ export class Login {
       buttons: ['OK']
     });
     alert.present();
-  }
+  }*/
   recuperation(){
-    let loader = this.loadingCtrl.create({
+    /*let loader = this.loadingCtrl.create({
       spinner: 'crescent',
       content: "Patienter s'il vous plaît..."
     });
@@ -138,7 +177,7 @@ export class Login {
 
     setTimeout(() => {
       loader.dismiss();
-    }, 1000);
+    }, 1000);*/
 
     this.navCtrl.push(Recuperation);
   }

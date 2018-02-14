@@ -25,12 +25,8 @@ export class ProfilePage {
     constructor(public navCtrl: NavController, public navParams: NavParams, public lookappsService: LookappsService) {
       this.email = this.navParams.get('pseudo');
       this.mdp = this.navParams.get('mdp');
-      this.lookappsService.getUtilisateurBy(this.email)
-        .then(newFetched => {
-            this.utilisateur = newFetched;
-            console.log(this.utilisateur);
-          
-        });
+      this.utilisateur = this.lookappsService.getUtilisateurConnecter();
+        
     }
 
 }

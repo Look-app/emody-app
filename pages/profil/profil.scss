@@ -12,8 +12,9 @@ page-profile {
         border-radius: 10px;
     }
     ion-content {
-        background-image: url('../../assets/imgs/back.png');
-        -webkit-background-image: url('../../assets/imgs/back.png');
+     //   background-image: url('../../assets/imgs/back.png');
+      //  -webkit-background-image: url('../../assets/imgs/back.png');
+        background-color :white;
         background-repeat: no-repeat;
         background-size:cover;
     }

@@ -16,6 +16,9 @@ export class LookappsService {
     //private baseURL: string = 'http://localhost:8080/';
     //private source: string = 'getUtilisateur';
 
+    public UtilisateurConnecter: LookappsUtilisateur;
+   // public email: string = "";
+
     constructor(private http: Http){
 
     }
@@ -110,5 +113,25 @@ export class LookappsService {
         .then(response => response.json() as Array<LookappsPersonnalisation>)
         .catch(error => console.log('Une erreur est survenue' + error))
     
+    } 
+    public getArticleByAll2(idCategorie, idSousCategorie): Promise<any> {
+        const url = this.baseURL + 'getArticleByAll2?idCategorie='+ idCategorie + '&idSousCategorie=' + idSousCategorie ;
+        
+        return this.http.get(url)
+        .toPromise()
+        .then(response => response.json() as Array<LookappsArticles>)
+        .catch(error => console.log('Une erreur est survenue' + error))
+    
     }
+
+    public setUtilisateurConnecter(uti: LookappsUtilisateur): void {
+
+       this.UtilisateurConnecter = uti;
+        
+    }
+    public getUtilisateurConnecter(): LookappsUtilisateur {
+       
+        return this.UtilisateurConnecter ;
+         
+     }
 }

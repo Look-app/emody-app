@@ -23,14 +23,24 @@ export class HomePage {
 
   utilisateurs: Array<LookappsUtilisateur> = new Array<LookappsUtilisateur>();
 
+  
     constructor(public navCtrl: NavController, public loadingCtrl: LoadingController, private lookappsService: LookappsService) {
+      /*let loading = this.loadingCtrl.create({
+        spinner: 'crescent',  
+          content: 'Veuillez patienter...'
+      });
+    
+      loading.present();
       this.lookappsService.getUtilisateurs()
       .then(newFetched => {
-          this.utilisateurs = newFetched;
-          console.log(this.utilisateurs);
+        if(newFetched.length!=0){
+            loading.dismiss();
+        }
+        this.utilisateurs = newFetched;
+        console.log(this.utilisateurs);
           
       });
-  
+  */
     }
 
   login() {

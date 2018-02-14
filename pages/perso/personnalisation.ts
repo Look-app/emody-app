@@ -1,46 +1,56 @@
 import { Component } from '@angular/core';
-import { LoadingController, AlertController } from 'ionic-angular';
+import { LoadingController, AlertController, RadioButton } from 'ionic-angular';
 import { LookappsService } from '../../services/lookappsdb.service';
 import { LookappsArticles } from '../../models/lookapp-articles.model';
+import { LookappsUtilisateur } from '../../models/lookapp-utilisateur.model';
 
 @Component({
     selector: 'page-personnalisation',
     templateUrl: 'personnalisation.html'
 })
 export class Personnalisation {
+  
+    sexe: string = '1';
+    autoSexe: RadioButton;
 
-
-    sexe: string;
+    utilisateur: LookappsUtilisateur = new LookappsUtilisateur();
 
     articles: Array<LookappsArticles> = new Array<LookappsArticles>();
     articles2: Array<LookappsArticles> = new Array<LookappsArticles>();
     constructor(public loadingCtrl: LoadingController, public alertCtrl: AlertController, public lookappsService: LookappsService) {
+        this.utilisateur = this.lookappsService.getUtilisateurConnecter();
+        console.log("sexe ="+this.utilisateur.sexe+" est connecter !!!");
         let loading = this.loadingCtrl.create({
             spinner: 'crescent',  
-            content: 'Veuillez patienter...'
+            content: 'Chargement...'
         });
 
+        this.sexe = this.utilisateur.sexe;
+
         loading.present();
-        this.lookappsService.getArticlesByCategorie(2)  //vetement de haut
+        this.lookappsService.getArticleByAll2(2 ,  this.sexe== "M" ? "Homme":"Femme" )  //vetement de haut
         .then(newFetched => {
             if(newFetched.length!=0){
                 loading.dismiss();
+                
+                this.articles = newFetched;
+                console.log(this.articles[0].image);
             }
             else{
-              this.doAlert('Erreur', 'Erreur lors du chargement des articles');
+                loading.dismiss();
+                this.doAlert('Erreur', 'Erreur lors du chargement des articles');
             }
-            this.articles = newFetched;
-            console.log(this.articles[0].image);
             
         });
 
         
-        this.lookappsService.getArticlesByCategorie(3)  //vetement de bas
+        this.lookappsService.getArticleByAll2(3 , this.sexe)  //vetement de bas
         .then(newFetched => {
             this.articles2 = newFetched;
             console.log(this.articles2);
             
         });
+
     }
   
     private doAlert(titre: string, message: string){
@@ -52,7 +62,7 @@ export class Personnalisation {
   
         alert.present();
     }
-  
+    
     presentLoading() {
         let loader = this.loadingCtrl.create({
         content: "Patienter s'il vous plaît...",
