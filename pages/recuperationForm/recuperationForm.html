@@ -1,0 +1,30 @@
+<ion-header>
+  <ion-navbar>
+      <ion-title><span style="color:rgb(113, 198, 255)">Réinitialisation de compte</span></ion-title>
+  </ion-navbar>
+</ion-header>
+<ion-content >
+  <div id="seConnecter" padding >
+    <h1 floating style="color:whitesmoke">Réinitialisation de mot de passe: </h1>
+    <div id="champ" padding>
+        <ion-item>
+          <ion-label stacked>Nouveau mot de passe:</ion-label>
+          <ion-input type="password" [(ngModel)]="mdp1" required></ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-label stacked>Confirmer le nouveau mot de passe:</ion-label>
+            <ion-input type="password" [(ngModel)]="mdp2" required></ion-input>
+        </ion-item>
+    </div>
+    
+      <div padding>
+          <button ion-button color="secondary" block (click)="valider()">Réinitialisation le mot de passe</button>
+      </div>
+  </div>
+ 
+</ion-content>
+
+
+
+
+

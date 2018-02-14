@@ -1,0 +1,28 @@
+page-accueil {
+    h1{
+        color:rgb(202, 148, 66);
+    }
+    ion-title{
+        background-color : rgb(0, 34, 145);
+    }
+    ion-content {
+        background-image: url('../../assets/imgs/back3.jpg');
+        -webkit-background-image: url('../../assets/imgs/back3.jpg');
+        background-repeat: no-repeat;
+       // background-size:cover;
+    }
+    #corps{
+        //background-color:red;
+        height: 385px;
+        color: white;
+    
+        opacity: 0.8;
+        filter: alpha(opacity=50); /* For IE8 and earlier */
+    
+    }
+    ion-searchbar{
+        opacity: 1;
+        filter: alpha(opacity=50); 
+    }
+  
+}

@@ -1,0 +1,28 @@
+
+<ion-header>
+        <ion-navbar>
+          <button ion-button menuToggle>
+              <ion-icon name="menu"></ion-icon>
+            </button>
+          <ion-title><span style="color:rgb(113, 198, 255)">Profil</span></ion-title>
+        </ion-navbar>
+      </ion-header>
+      
+    <ion-content>
+        <div id="profile-bg" [ngStyle]="{'background-image': 'url(' + imageUrl +')'}"></div>
+        <div id="content">
+              <div id="profile-info">
+                    <img id="profile-image" src="assets/imgs/profile/profile.jpg">
+                    <h3 id="profile-name">John</h3>
+                    <span id="profile-description">Aucune description.</span>
+                    <p>Follow my <a href="https://twitter.com/ionicframework">@facebook</a> and
+                    <a href="https://twitter.com/driftyco">@twitter</a> accounts.</p>
+              </div>
+              <ion-list>
+                <ion-item >
+                    
+                </ion-item>
+              </ion-list>
+        </div>
+      
+    </ion-content>

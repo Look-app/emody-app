@@ -1,0 +1,35 @@
+
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+        <ion-icon name="menu"></ion-icon>
+      </button>
+    <ion-title><span style="color:rgb(113, 198, 255)">Accueil</span></ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+    <ion-grid>
+      
+        <ion-row>
+          <ion-col col-12 id="corps" >  
+              <ion-card>
+
+                <ion-card-content>
+                  <!-- Add card content here! -->
+                  <ion-item  color="primary">
+                      Listes des vêtements
+                      <ion-searchbar (ionInput)="getItems($event)"></ion-searchbar>
+                      <ion-list>
+                        <ion-item *ngFor="let item of items">
+                          {{ item }}
+                        </ion-item>
+                      </ion-list>
+                  </ion-item>
+                </ion-card-content>
+              
+              </ion-card>
+          </ion-col>
+        </ion-row>
+    </ion-grid>
+</ion-content>

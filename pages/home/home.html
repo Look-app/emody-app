@@ -1,0 +1,60 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title><span style="color:rgb(113, 198, 255)">Bienvenu sur Lookapps</span></ion-title>
+  </ion-navbar>
+</ion-header>
+<ion-content >
+  <div id="slide">
+      <ion-slides pager style="height:300px">
+        <ion-slide >
+           <ion-img [width]="500" [height]="200" src="../../assets/imgs/banner1.png"></ion-img>
+        </ion-slide>
+      
+        <ion-slide >
+            <ion-img [width]="500" [height]="200" src="../../assets/imgs/banner2.png"></ion-img>
+        </ion-slide>
+      
+        <ion-slide>
+            <ion-img [width]="500" [height]="200" src="../../assets/imgs/banner3.png"></ion-img>
+        </ion-slide>
+
+        <ion-slide>
+            <ion-img [width]="500" [height]="200" src="../../assets/imgs/banner4.png"></ion-img>
+        </ion-slide>
+      </ion-slides>
+  </div>
+   
+  <div id="slide" padding >
+   
+    
+      <div padding>
+          <button ion-button color="secondary" block (click)="login()">
+          Se connecter 
+          </button>
+      </div>
+      <div padding>
+          <button ion-button color="default" block (click)="inscription()">
+          s'inscrire 
+          </button>
+      </div>
+  </div>
+ <!-- <ion-card *ngFor="let utilisateur of utilisateurs">
+
+      <ion-card-header>
+          {{utilisateur.nom}}
+      </ion-card-header>
+    
+      <ion-card-content>
+          {{utilisateur.email}}
+         Add card content here! 
+      </ion-card-content>
+    
+  </ion-card>-->
+
+
+</ion-content>
+
+
+
+
+

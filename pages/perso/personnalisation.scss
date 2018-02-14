@@ -1,0 +1,19 @@
+page-peronnalisation {
+    ion-title{
+        background-color : rgb(0, 34, 145);
+    }
+    ion-item {
+        opacity: 1.0;
+        filter: alpha(opacity=70);
+        border-radius: 10px;
+    }
+    ion-button {
+        border-radius: 10px;
+    }
+    ion-content {
+        background-image: url('../../assets/imgs/back3.png');
+        -webkit-background-image: url('../../assets/imgs/back3.png');
+        background-repeat: no-repeat;
+        background-size:cover;
+    }
+}

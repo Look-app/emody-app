@@ -1,0 +1,88 @@
+<ion-header>
+  <ion-navbar>
+      <ion-title><span style="color:rgb(113, 198, 255)">Bienvenu sur Lookapps</span></ion-title>
+  </ion-navbar>
+</ion-header>
+<ion-content >
+  <div id="inscription" padding >
+    <h1 floating style="color:whitesmoke">Votre compte <span style="font-style:italic;color:royalblue">Lookapps</span>:</h1>
+    <div id="champ" padding>
+        <ion-item>
+            <ion-label floating>Votre Nom :</ion-label>
+            <ion-input type="text" [(ngModel)]="nom" required></ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-label floating>Votre prénom :</ion-label>
+            <ion-input type="text" [(ngModel)]="prenom" required></ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-label>Naissance :</ion-label>
+            <ion-input type="number" [(ngModel)]="jour" placeholder="jour"></ion-input>
+            <ion-select [(ngModel)]="mois">
+                <ion-option value="01">Janvier</ion-option>
+                <ion-option value="02">Février</ion-option>
+                <ion-option value="03">Mars</ion-option>
+                <ion-option value="04">Avril</ion-option>
+                <ion-option value="05">May</ion-option>
+                <ion-option value="06">Juin</ion-option>
+                <ion-option value="07">Juillet</ion-option>
+                <ion-option value="08">Août</ion-option>
+                <ion-option value="09">Septembre</ion-option>
+                <ion-option value="10">Octobre</ion-option>
+                <ion-option value="11">Novembre</ion-option>
+                <ion-option value="12" checked="true">Decembre</ion-option>
+              </ion-select>
+            <ion-select [(ngModel)]="annee">
+              <ion-option>1992</ion-option>
+              <ion-option>1993</ion-option>
+              <ion-option checked="true">1994</ion-option>
+              <ion-option>1995</ion-option>
+              <ion-option>1996</ion-option>
+              <ion-option>1997</ion-option>
+              <ion-option>1998</ion-option>
+              <ion-option>1999</ion-option>
+              <ion-option>2000</ion-option>
+              <ion-option>2001</ion-option>
+              <ion-option>2002</ion-option>
+              <ion-option>2003</ion-option>
+              <ion-option>2004</ion-option>
+              <ion-option>2005</ion-option>
+            </ion-select>
+        </ion-item>
+        <ion-item>
+            <ion-label>Sexe</ion-label>
+            <ion-select [(ngModel)]="sexe">
+              <ion-option value="M">Homme</ion-option>
+              <ion-option value="F">Femme</ion-option>
+            </ion-select>
+        </ion-item>
+
+        <ion-item>
+          <ion-label floating>Adresse email :</ion-label>
+          <ion-input type="email" [(ngModel)]="email" required></ion-input>
+        </ion-item>
+        
+        <ion-item>
+          <ion-label floating>Mot de passe :</ion-label>
+          <ion-input type="password" [(ngModel)]="mdp1"  required></ion-input>
+        </ion-item>
+
+        <ion-item>
+            <ion-label floating>Confirmez votre mot de passe :</ion-label>
+            <ion-input type="password" [(ngModel)]="mdp2"  required></ion-input>
+        </ion-item>
+        
+      
+    </div>
+    
+      <div padding>
+          <button ion-button color="secondary" block (click)="inscrire()">Valider</button>
+      </div>
+  </div>
+ 
+</ion-content>
+
+
+
+
+

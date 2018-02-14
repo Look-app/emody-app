@@ -1,0 +1,27 @@
+<ion-header>
+  <ion-navbar>
+      <ion-title><span style="color:rgb(113, 198, 255)">Tentative de recupération de compte</span></ion-title>
+  </ion-navbar>
+</ion-header>
+<ion-content >
+  <div id="seConnecter" padding >
+    <h1 floating style="color:whitesmoke">Veuillez informez votre email:</h1>
+    <div id="champ" padding>
+        <ion-item>
+          <ion-label floating>Adresse email:</ion-label>
+          <ion-input type="email" [(ngModel)]="email" required></ion-input>
+        </ion-item>
+      
+    </div>
+    
+      <div padding>
+          <button ion-button color="secondary" block (click)="showPrompt()">Valider</button>
+      </div>
+  </div>
+ 
+</ion-content>
+
+
+
+
+

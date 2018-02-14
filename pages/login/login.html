@@ -1,0 +1,35 @@
+<ion-header>
+  <ion-navbar>
+      <ion-title><span style="color:rgb(113, 198, 255)">Tentative de connexion</span></ion-title>
+  </ion-navbar>
+</ion-header>
+<ion-content >
+  <div id="seConnecter" padding >
+    <h1 floating style="color:whitesmoke">Identifiez-vous:</h1>
+    <div id="champ" padding>
+        <ion-item>
+          <ion-label floating>Votre Email ou nom</ion-label>
+          <ion-input type="email" [(ngModel)]="email" required></ion-input>
+        </ion-item>
+        
+        <ion-item>
+          <ion-label floating>Mot de passe</ion-label>
+          <ion-input type="password" [(ngModel)]="mdp"  required></ion-input>
+        </ion-item>
+      
+    </div>
+    
+      <div padding>
+          <button ion-button color="secondary" block (click)="presentLoading()">Valider</button>
+      </div>
+      <div padding>
+          <button ion-button color="default" block (click)="recuperation()">Mot de passe Oublié ?</button>
+      </div>
+  </div>
+ 
+</ion-content>
+
+
+
+
+
