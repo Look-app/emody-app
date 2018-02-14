@@ -84,6 +84,24 @@ export class LookappsService {
         .catch(error => console.log('Une erreur est survenue' + error))
     
     }
+    public getArticlesByCategorie(idCateg): Promise<any> {
+        const url = this.baseURL + 'getArticleByCateg?idCateg=' + idCateg ;
+        
+        return this.http.get(url)
+        .toPromise()
+        .then(response => response.json() as Array<LookappsArticles>)
+        .catch(error => console.log('Une erreur est survenue' + error))
+    
+    }
+    public getArticlesBySousCategorie(idSousCateg): Promise<any> {
+        const url = this.baseURL + 'getArticleBySousCateg?idSouSCateg=' + idSousCateg ;
+        
+        return this.http.get(url)
+        .toPromise()
+        .then(response => response.json() as Array<LookappsArticles>)
+        .catch(error => console.log('Une erreur est survenue' + error))
+    
+    }
     public getPersonnalisationBy(idUser): Promise<any> {
         const url = this.baseURL + 'getPersonnalisationBy?idUser='+idUser ;
         

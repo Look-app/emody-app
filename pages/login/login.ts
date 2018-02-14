@@ -25,57 +25,60 @@ export class Login {
   test: string[];
 
   constructor(public navCtrl: NavController, public loadingCtrl: LoadingController, private alertCtrl: AlertController, public lookappsService: LookappsService) {
-      this.lookappsService.getUtilisateurs()
-      .then(newFetched => {
-          this.utilisateurs = newFetched;
-          console.log(this.utilisateurs);
-          
-      });
-
     
+  }
+
+  chargerUlisateurs(){
+    let loader = this.loadingCtrl.create({
+      spinner: 'crescent',
+      content: "Veuillez Patienter..."
+    });
+    loader.present();
+    this.lookappsService.getUtilisateurs()
+        .then(newFetched => {
+          if(newFetched.length != 0){
+              loader.dismiss();
+          } 
+          else if(newFetched.length == 0){
+              this.doAlert('Erreur', 'Nous sommes désolé car une erreur est survenue lors du chargement');
+          }
+            this.utilisateurs = newFetched;
+            console.log(this.utilisateurs);
+            
+        });
   }
   appel(){
   let loader = this.loadingCtrl.create({
       spinner: 'crescent',
-      content: "Patienter s'il vous plaît..."
+      content: "Veuillez Patienter..."
   });
 
   loader.present();
     this.lookappsService.sha1(this.mdp)
     .then(newFetched => {
-      if(newFetched.valeur != null){
+      if(newFetched.length != 0){
           loader.dismiss();
-          //this.showAlertMdp(); 
-          this.passwordCrypted = newFetched.valeur; 
-        console.log(this.passwordCrypted);
       } 
-     
-        //console.log(this.passwordCrypted.valeur);
-       // this.test = this.testUser(); 
-       // console.log("test =");
-         
+          this.passwordCrypted = newFetched.valeur; 
+          console.log(this.passwordCrypted);
+ 
     });
   }
 
   testUser(): any{
-    
+    this.chargerUlisateurs();
     let retour = [false, false];
     for(let i=0; i< this.utilisateurs.length; i++){
         if(this.utilisateurs[i].nom==this.email || this.utilisateurs[i].email==this.email || this.utilisateurs[i].prenom==this.email){
             retour[0] = true;
-            
-        //    console.log(this.utilisateurs[i].nom+" == "+this.email);
-          //  console.log(this.utilisateurs[i].password+" == "+this.passwordCrypted);
-         
-
-          if(this.utilisateurs[i].password==this.passwordCrypted){
-                retour[1] = true;
-                return retour;//testUser == vraie
-              }
-          else{
-                retour[1] = false;
-                break;
-              }
+            if(this.utilisateurs[i].password==this.passwordCrypted){
+                  retour[1] = true;
+                  return retour;//testUser == vraie
+            }
+            else{
+                  retour[1] = false;
+                  return retour;
+            }
         }
         else{
             retour[0] = false;
@@ -85,24 +88,13 @@ export class Login {
   }
   
   presentLoading() {
-  /*let loader = this.loadingCtrl.create({
-      spinner: 'crescent',
-      content: "Patienter s'il vous plaît..."
-  });
 
-  loader.present();*/
-
-    //console.log("MDP MDP = "+this.mdp);
     this.appel();
+
     let test2 =  this.testUser();
     console.log("test = "+test2);
     if(test2[0]==true){
         if(test2[1]==true){
-            
-
-     /*   setTimeout(() => {
-          loader.dismiss();
-        }, 3000);*/
         
         this.navCtrl.setRoot(TabsPage,{
           pseudo: this.email,
@@ -110,7 +102,7 @@ export class Login {
         });
 
         }else if(test2[1]!=true){
-          this.showAlertMdp();
+            this.showAlertMdp();
         }
 
     }
@@ -148,5 +140,14 @@ export class Login {
     }, 1000);
 
     this.navCtrl.push(Recuperation);
+  }
+  private doAlert(titre: string, message: string){
+    let alert = this.alertCtrl.create({
+        title: titre,
+        message: message,
+        buttons: ['OK']
+    });
+
+    alert.present();
   }
 }

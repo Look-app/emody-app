@@ -34,7 +34,7 @@ export class HomePage {
   }
 
   login() {
-    let loader = this.loadingCtrl.create({
+    /*let loader = this.loadingCtrl.create({
         spinner: 'crescent',
         content: "Patienter s'il vous plaît..."
       });
@@ -43,12 +43,12 @@ export class HomePage {
 
         setTimeout(() => {
           loader.dismiss();
-        }, 500);
+        }, 500);*/
 
         this.navCtrl.push(Login);
     }
     inscription() {
-      let loader = this.loadingCtrl.create({
+     /* let loader = this.loadingCtrl.create({
           spinner: 'crescent',
           content: "Patienter s'il vous plaît..."
         });
@@ -57,7 +57,7 @@ export class HomePage {
   
           setTimeout(() => {
             loader.dismiss();
-          }, 1000);
+          }, 1000);*/
   
           this.navCtrl.push(Inscription);
       }

@@ -27,7 +27,7 @@ export class Accueil {
     constructor(public navCtrl: NavController, public navParams: NavParams,public alertCtrl: AlertController,  public loadingCtrl: LoadingController, private lookappsService: LookappsService ) {
       this.init();
      // console.log(this.articles);
-    //  this.initializeItems();  
+      this.initializeItems();  
      
       this.pseudo = this.navParams.get('pseudo');
         this.mdp = this.navParams.get('mdp');
@@ -56,7 +56,8 @@ export class Accueil {
 
     init(){
       let loading = this.loadingCtrl.create({
-          content: 'Veuillez patienter...'
+        spinner: 'crescent',  
+        content: 'Veuillez patienter...'
       });
       loading.present();
 
