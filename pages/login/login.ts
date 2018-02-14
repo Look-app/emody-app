@@ -67,6 +67,7 @@ export class Login {
 
   testUser(): any{
     this.chargerUlisateurs();
+    
     let retour = [false, false];
     for(let i=0; i< this.utilisateurs.length; i++){
         if(this.utilisateurs[i].nom==this.email || this.utilisateurs[i].email==this.email || this.utilisateurs[i].prenom==this.email){

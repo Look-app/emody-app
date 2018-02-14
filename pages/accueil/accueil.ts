@@ -29,8 +29,8 @@ export class Accueil {
      // console.log(this.articles);
       this.initializeItems();  
      
-      this.pseudo = this.navParams.get('pseudo');
-        this.mdp = this.navParams.get('mdp');
+     // this.pseudo = this.navParams.get('pseudo');
+      //this.mdp = this.navParams.get('mdp');
         console.log(this.pseudo);
         console.log(this.mdp);
 

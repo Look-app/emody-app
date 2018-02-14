@@ -23,7 +23,7 @@ export class HomePage {
 
   utilisateurs: Array<LookappsUtilisateur> = new Array<LookappsUtilisateur>();
 
-  constructor(public navCtrl: NavController, public loadingCtrl: LoadingController, private lookappsService: LookappsService) {
+    constructor(public navCtrl: NavController, public loadingCtrl: LoadingController, private lookappsService: LookappsService) {
       this.lookappsService.getUtilisateurs()
       .then(newFetched => {
           this.utilisateurs = newFetched;
@@ -31,19 +31,9 @@ export class HomePage {
           
       });
   
-  }
+    }
 
   login() {
-    /*let loader = this.loadingCtrl.create({
-        spinner: 'crescent',
-        content: "Patienter s'il vous plaît..."
-      });
-      
-        loader.present();
-
-        setTimeout(() => {
-          loader.dismiss();
-        }, 500);*/
 
         this.navCtrl.push(Login);
     }
@@ -63,60 +53,5 @@ export class HomePage {
       }
     
 
-
-
-
-
-
-
-
-
-      
-  /*presentLoading() {
-  let loader = this.loadingCtrl.create({
-      spinner: 'crescent',
-      content: "Patienter s'il vous plaît..."
-    });
-    
-    if(this.pseudo=='Angelo' && this.mdp=='azerty'){
-        loader.present();
-
-        setTimeout(() => {
-          loader.dismiss();
-        }, 2000);
-
-        this.navCtrl.push(Accueil,{
-          pseudo: this.pseudo,
-          mdp: this.mdp
-        });
-
-    }
-    else{
-      this.showAlert();
-    }
-  }
-   
-  goMapLoading() {
-    let loader = this.loadingCtrl.create({
-      spinner: 'crescent',
-      content: "Tentative de connexion..."
-    });
-    
-    loader.present();
-
-    setTimeout(() => {
-      loader.dismiss();
-    }, 2000);
-    this.navCtrl.push(MapPage);
-  
-  }
-  showAlert() {
-    let alert = this.alertCtrl.create({
-      title: 'Erreur de connexion',
-      subTitle: 'Veuillez-vous connecter s\'il vous plaît !',
-      buttons: ['OK']
-    });
-    alert.present();
-  }*/
 
 }

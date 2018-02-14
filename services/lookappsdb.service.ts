@@ -40,7 +40,7 @@ export class LookappsService {
     
     }
     public getUtilisateurBy(email): Promise<any> {
-        const url = this.baseURL + 'getUtilisateur?email='+email;
+        const url = this.baseURL + 'getUtilisateur?email='+ email;
         
         return this.http.get(url)
         .toPromise()

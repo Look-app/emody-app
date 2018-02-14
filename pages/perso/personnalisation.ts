@@ -13,7 +13,7 @@ export class Personnalisation {
     sexe: string;
 
     articles: Array<LookappsArticles> = new Array<LookappsArticles>();
-    
+    articles2: Array<LookappsArticles> = new Array<LookappsArticles>();
     constructor(public loadingCtrl: LoadingController, public alertCtrl: AlertController, public lookappsService: LookappsService) {
         let loading = this.loadingCtrl.create({
             spinner: 'crescent',  
@@ -24,29 +24,23 @@ export class Personnalisation {
         this.lookappsService.getArticlesByCategorie(2)  //vetement de haut
         .then(newFetched => {
             if(newFetched.length!=0){
-              loading.dismiss();
+                loading.dismiss();
             }
             else{
               this.doAlert('Erreur', 'Erreur lors du chargement des articles');
             }
             this.articles = newFetched;
-            console.log(this.articles);
+            console.log(this.articles[0].image);
             
         });
-/*
-        loading.present();
-        this.lookappsService.getArticlesBySousCategorie(this.sexe)  //vetement de haut
+
+        
+        this.lookappsService.getArticlesByCategorie(3)  //vetement de bas
         .then(newFetched => {
-            if(newFetched.length!=0){
-              loading.dismiss();
-            }
-            else{
-              this.doAlert('Erreur', 'Erreur lors du chargement des articles');
-            }
-            this.articles = newFetched;
-            console.log(this.articles);
+            this.articles2 = newFetched;
+            console.log(this.articles2);
             
-        });*/
+        });
     }
   
     private doAlert(titre: string, message: string){

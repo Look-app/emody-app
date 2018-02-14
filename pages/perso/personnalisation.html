@@ -18,7 +18,7 @@
                             <ion-slides pager>
                                 <div id="categ" *ngFor="let element of articles">
                                     <ion-slide >
-                                        <ion-img [width]="500" id="slides1" [height]="175" src="../../assets/imgs/{{ element.image }}."></ion-img>
+                                        <ion-img [width]="180" id="slides1" [height]="175" src="../../assets/imgs/{{ element.image }}"></ion-img>
                                     </ion-slide>
                                 </div>
                                    <!-- <ion-slide >
@@ -37,21 +37,11 @@
                 vêtement de bas:
                     <ion-card>
                             <ion-slides pager>
-                                    <ion-slide >
-                                        <ion-img [width]="500" id="slides" [height]="175" src="../../assets/imgs/banner1.png"></ion-img>
-                                    </ion-slide>
-                                
-                                    <ion-slide >
-                                        <ion-img [width]="500" id="slides" [height]="175" src="../../assets/imgs/banner2.png"></ion-img>
-                                    </ion-slide>
-                                
-                                    <ion-slide>
-                                        <ion-img [width]="500" id="slides" [height]="175" src="../../assets/imgs/banner3.png"></ion-img>
-                                    </ion-slide>
-                            
-                                    <ion-slide>
-                                        <ion-img [width]="500" id="slides" [height]="175" src="../../assets/imgs/banner4.png"></ion-img>
-                                    </ion-slide>
+                                    <div id="categ" *ngFor="let element of articles2">
+                                            <ion-slide >
+                                                <ion-img [width]="180" id="slides1" [height]="175" src="../../assets/imgs/{{ element.image }}"></ion-img>
+                                            </ion-slide>
+                                    </div>
                             </ion-slides>
                     </ion-card>
                 <button ion-button clear>Enregistrer</button>

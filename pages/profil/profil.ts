@@ -18,12 +18,13 @@ export class ProfilePage {
     posts = [];
     imageUrl: string = 'assets/imgs/profile/profile.jpg';
     email: string ;
-    nom: string;
+    mdp: string;
   
     utilisateur: LookappsUtilisateur = new LookappsUtilisateur();
 
-    constructor(public navCtrl: NavController, public lookappsService: LookappsService) {
-        
+    constructor(public navCtrl: NavController, public navParams: NavParams, public lookappsService: LookappsService) {
+      this.email = this.navParams.get('pseudo');
+      this.mdp = this.navParams.get('mdp');
       this.lookappsService.getUtilisateurBy(this.email)
         .then(newFetched => {
             this.utilisateur = newFetched;
